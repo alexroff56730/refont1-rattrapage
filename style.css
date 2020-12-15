@@ -1,0 +1,355 @@
+/*reset*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+ul {
+    list-style-type: none;
+}
+
+/*end reset*/
+
+body {
+    background-color:  #2b292c;
+    color:white;
+}
+
+@media screen and (min-width:375px){
+    /*
+ * Made by Erik Terwan
+ * 24th of November 2015
+ * MIT License
+ *
+ *
+ * If you are thinking of using this in
+ * production code, beware of the browser
+ * prefixes.
+ */
+#menuToggle
+{
+  display: block;
+  position: relative;
+  top: 50px;
+  left: 50px;
+  
+  z-index: 1;
+  
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#menuToggle a
+{
+  text-transform: uppercase;
+  color: white;
+  
+  transition: color 0.3s ease;
+}
+
+#menuToggle input
+{
+  display: block;
+  width: 40px;
+  height: 32px;
+  position: absolute;
+  top: -7px;
+  left: -5px;
+  
+  cursor: pointer;
+  
+  opacity: 0; /* hide this */
+  z-index: 2; /* and place it over the hamburger */
+  
+  -webkit-touch-callout: none;
+}
+
+/*
+ * Just a quick hamburger
+ */
+#menuToggle span
+{
+  display: block;
+  width: 33px;
+  height: 4px;
+  margin-bottom: 5px;
+  position: relative;
+  
+  background: #cdcdcd;
+  border-radius: 3px;
+  
+  z-index: 1;
+  
+  transform-origin: 4px 0px;
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+}
+
+#menuToggle span:first-child
+{
+  transform-origin: 0% 0%;
+}
+
+#menuToggle span:nth-last-child(2)
+{
+  transform-origin: 0% 100%;
+}
+
+/* 
+ * Transform all the slices of hamburger
+ * into a crossmark.
+ */
+#menuToggle input:checked ~ span
+{
+  opacity: 1;
+  transform: rotate(45deg) translate(-2px, -1px);
+  background: #232323;
+}
+
+/*
+ * But let's hide the middle one.
+ */
+#menuToggle input:checked ~ span:nth-last-child(3)
+{
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+/*
+ * Ohyeah and the last one should go the other direction
+ */
+#menuToggle input:checked ~ span:nth-last-child(2)
+{
+  transform: rotate(-45deg) translate(0, -1px);
+}
+
+/*
+ * Make this absolute positioned
+ * at the top left of the screen
+ */
+#menu
+{
+  position: absolute;
+  width: 300px;
+  margin: -100px 0 0 -50px;
+  padding: 50px;
+  padding-top: 125px;
+  
+  background-color: #e16631;
+  list-style-type: none;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  
+  transform-origin: 0% 0%;
+  transform: translate(-100%, 0);
+  
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+}
+
+#menu li
+{
+  padding: 10px 0;
+  font-size: 1.4rem;
+}
+
+/*
+ * And let's slide it in from the left
+ */
+#menuToggle input:checked ~ ul
+{
+  transform: none;
+}
+
+#banner {
+    background-color: #e16631;
+}
+
+#banner #logo {
+    width: 193px;
+    height: 100px;
+    margin: 0 48%;
+}
+
+#banner #logo img {
+    width: 100%;
+    height: 100%;
+}
+
+#index-content .post-index {
+    display: flex;
+    flex-direction: column;
+    margin: 0 20px;
+}
+
+#index-content .post-index h1 {
+    margin: 5px 5px;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+#index-content .post-index p {
+    font-size: 1.0rem;
+    margin: 20px 5px;
+}
+
+#slider {
+  position: relative;
+  max-width: 100%;
+  overflow: hidden;
+  height: 400px;
+}
+
+#slides {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: flex;
+  max-height: 100%;
+  /*CSS3 keyframes animation*/
+  animation-name: slide;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+#slides:hover {
+  animation-play-state: paused; /* Mise en pause de l'animation */
+}
+
+#slides figure {
+  display: inline-block;
+  width: 100vw;
+  max-height: 100%;
+  margin: 0;
+}
+
+#slides figure img {
+  width: 100%;
+  /*Centrer l'image verticalement si celle-ci ne peut être affichée totalement*/
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+#slides figure figcaption {
+  position: absolute;
+  bottom: 0;
+  padding: 2.5em 0;
+  text-align: center;
+  width: inherit;
+  background-color: rgba(0,0,0,0.5);
+  color: white;
+}
+
+.dots_commands  {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  width: 100vw;
+  padding:0;
+  margin: 0;
+  text-align: center;
+  justify-content: center;
+}
+
+.dots_commands li {
+  display: inline;
+  padding:0; margin:0;
+}
+
+.dots_commands label {
+  position: relative;
+  display: inline-block;
+  height:8px; width: 8px;
+  margin: 0 5px;
+  text-indent: -9999px;
+  background: #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.55) inset;
+  cursor: pointer;
+}
+
+.dots_commands label:active {
+  outline: none;
+  background: dodgerblue;
+}
+
+#play {
+  position: absolute;
+  cursor: pointer;
+  bottom: 2em;
+  right: 2em;
+  width: 0;
+  height: 0;
+  border-top: 1em solid transparent;
+  border-bottom: 1em solid transparent;
+  border-left: 1em solid rgba(255,255,255,0.7);
+  display: none;
+  text-indent: -9999px;
+}
+
+input[type="radio"] {
+  display: none;
+}
+
+input[type="radio"]#show_slide1:checked ~ nav .dots_commands li:nth-of-type(1) label,
+input[type="radio"]#show_slide2:checked ~ nav .dots_commands li:nth-of-type(2) label,
+input[type="radio"]#show_slide3:checked ~ nav .dots_commands li:nth-of-type(3) label {
+  outline: none;
+  background: dodgerblue;
+}
+
+input[type="radio"]#show_slide1:checked ~ div#slides {
+  animation: none;
+  left: 0;
+}
+
+input[type="radio"]#show_slide2:checked ~ div#slides {
+  animation: none;
+  left: -100vw;
+}
+
+input[type="radio"]#show_slide3:checked ~ div#slides {
+  animation: none;
+  left: -200vw;
+}
+
+input[type="radio"]:not(:nth-last-of-type(1)):checked ~ nav label#play {
+  display: block;
+}
+
+input[type="radio"]#play:checked ~ div#slides {
+  animation-name: slide;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+}
+
+@keyframes slide {
+  0%, 20%, 100% {
+      left: 0; /*1ère image*/
+  }
+  35%, 50% {
+      left: -100vw; /*2ème image*/
+  }
+  70%, 95% {
+      left: -200vw; /*3ème image*/
+  }
+}
+
+footer {
+  background-color: #e16631;
+  min-height: 100px;
+  max-height: 2000px;
+}
+
+}
